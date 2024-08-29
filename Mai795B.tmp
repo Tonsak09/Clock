@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://deb1pnirpr74r"]
+
+[ext_resource type="Texture2D" uid="uid://b37kcxskiuvn1" path="res://Circ.png" id="1_qaomx"]
+[ext_resource type="Script" path="res://Scripts/Circle.gd" id="1_vab57"]
+[ext_resource type="Texture2D" uid="uid://cjncjpbsrghyy" path="res://Blank.png" id="2_8eg6i"]
+[ext_resource type="Script" path="res://Scripts/Clock.gd" id="3_x3f3c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ppqg"]
+radius = 152.003
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Planet" type="Sprite2D" parent="."]
+position = Vector2(0, 324)
+scale = Vector2(3, 3)
+texture = ExtResource("1_qaomx")
+
+[node name="Blank" type="Sprite2D" parent="."]
+scale = Vector2(3.345, 3.345)
+texture = ExtResource("2_8eg6i")
+
+[node name="Clock" type="Node2D" parent="."]
+position = Vector2(0, 167)
+script = ExtResource("3_x3f3c")
+
+[node name="Line2D" type="Line2D" parent="Clock"]
+width = 2.0
+joint_mode = 2
+script = ExtResource("1_vab57")
+radius = 152.0
+density = 80
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clock/Line2D"]
+shape = SubResource("CircleShape2D_4ppqg")
